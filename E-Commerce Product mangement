@@ -1,0 +1,33 @@
+-- Table Creation
+CREATE TABLE Categories (
+    CategoryID INT PRIMARY KEY,
+    CategoryName VARCHAR(255)
+);
+
+CREATE TABLE Products (
+    ProductID INT PRIMARY KEY,
+    ProductName VARCHAR(255),
+    Price DECIMAL(10, 2),
+    StockQuantity INT,
+    CategoryID INT,
+    FOREIGN KEY (CategoryID) REFERENCES Categories(CategoryID)
+);
+
+-- Queries
+-- Retrieve a list of products along with their categories.
+SELECT p.ProductName, p.Price, p.StockQuantity, c.CategoryName
+FROM Products p
+JOIN Categories c ON p.CategoryID = c.CategoryID;
+
+-- Find products with low stock
+SELECT * FROM Products WHERE StockQuantity < 10;
+
+-- Calculate total revenue by category
+SELECT c.CategoryName, SUM(p.Price * p.StockQuantity) AS TotalRevenue
+FROM Products p
+JOIN Categories c ON p.CategoryID = c.CategoryID
+GROUP BY c.CategoryName;
+
+-- Add a new product
+-- Assuming you have a stored procedure
+-- EXEC AddProduct('Laptop', 899.99, 20, 1);

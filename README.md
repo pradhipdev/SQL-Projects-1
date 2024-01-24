@@ -1,1 +1,8 @@
-# SQL-Projects-1
+Project 1: Employee Management System:
+                  Developed and implemented an Employee Management System database to streamline HR processes. The system comprises tables for employees and departments. Responsibilities included designing efficient database structures, optimizing SQL queries for data retrieval, and ensuring data integrity. Created queries to retrieve employee details along with department names, calculate average salaries by department, and implemented a stored procedure for adding new employees to enhance the system's functionality.
+Project 2: E-commerce Product Management:
+                  Designed a comprehensive E-commerce Product Management database for tracking products and categories. The system facilitates efficient data management and reporting for an online store. Tasks included creating tables for products and categories, optimizing SQL queries for product information retrieval, and implementing stored procedures to add new products. Developed queries to retrieve products with their associated categories, identify products with low stock, and calculate total revenue by category.
+
+Project 3: Library Management System:
+                Engineered a Library Management System database to efficiently manage books, authors, and members. This system enhances library operations by providing features for tracking book borrowing and member details. Responsibilities encompassed designing tables for books, authors, and members, creating SQL queries for retrieving book details with author names, and implementing stored procedures for checking out and returning books. Additionally, designed queries to find books published before a certain year and identify members with the most borrowed books.
+

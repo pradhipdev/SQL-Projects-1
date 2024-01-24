@@ -1,0 +1,33 @@
+-- Table Creation
+CREATE TABLE Departments (
+    DepartmentID INT PRIMARY KEY,
+    DepartmentName VARCHAR(255)
+);
+
+CREATE TABLE Employees (
+    EmployeeID INT PRIMARY KEY,
+    FirstName VARCHAR(255),
+    LastName VARCHAR(255),
+    Email VARCHAR(255),
+    Phone VARCHAR(20),
+    DepartmentID INT,
+    HireDate DATE,
+    Salary DECIMAL(10, 2),
+    FOREIGN KEY (DepartmentID) REFERENCES Departments(DepartmentID)
+);
+
+-- Queries
+-- Retrieve a list of employees along with their department names.
+SELECT e.FirstName, e.LastName, d.DepartmentName
+FROM Employees e
+JOIN Departments d ON e.DepartmentID = d.DepartmentID;
+
+-- Calculate the average salary for each department.
+SELECT DepartmentName, AVG(Salary) AS AvgSalary
+FROM Employees
+JOIN Departments ON Employees.DepartmentID = Departments.DepartmentID
+GROUP BY DepartmentName;
+
+-- Add a new employee
+-- Assuming you have a stored procedure
+-- EXEC AddEmployee('John', 'Doe', 'john.doe@email.com', '1234567890', 1, '2024-01-01', 50000);

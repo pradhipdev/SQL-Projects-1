@@ -1,0 +1,44 @@
+-- Table Creation
+CREATE TABLE Authors (
+    AuthorID INT PRIMARY KEY,
+    AuthorName VARCHAR(255)
+);
+
+CREATE TABLE Books (
+    BookID INT PRIMARY KEY,
+    Title VARCHAR(255),
+    AuthorID INT,
+    Genre VARCHAR(255),
+    ISBN VARCHAR(20),
+    PublicationYear INT,
+    FOREIGN KEY (AuthorID) REFERENCES Authors(AuthorID)
+);
+
+CREATE TABLE Members (
+    MemberID INT PRIMARY KEY,
+    FirstName VARCHAR(255),
+    LastName VARCHAR(255),
+    Email VARCHAR(255),
+    Phone VARCHAR(20)
+);
+
+-- Queries
+-- Retrieve a list of books along with their authors.
+SELECT b.Title, a.AuthorName
+FROM Books b
+JOIN Authors a ON b.AuthorID = a.AuthorID;
+
+-- Find books published before a certain year.
+SELECT * FROM Books WHERE PublicationYear < 2000;
+
+-- Identify members who have borrowed the most books.
+SELECT m.FirstName, m.LastName, COUNT(*) AS BooksBorrowed
+FROM Members m
+JOIN BorrowedBooks bb ON m.MemberID = bb.MemberID
+GROUP BY m.FirstName, m.LastName
+ORDER BY BooksBorrowed DESC
+LIMIT 1;
+
+-- Assuming you have stored procedures for checking out and returning books.
+-- EXEC CheckOutBook(1, 1, '2024-01-15');
+-- EXEC ReturnBook(1, 1, '2024-02-01');
